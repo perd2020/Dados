@@ -31,6 +31,24 @@ X_distri
 
 ![imitando_juego_de_dados - Jupyter Notebook - Google Chrome 22_2_2023 2_20_20 p  m](https://user-images.githubusercontent.com/91780371/220706360-23de2b03-68a9-4ba4-b606-ca3a8ab73391.png)
 
+#### buscamos la media y la varianza
+mean = pd.Series(X_distri.index * X_distri['Prob']).sum()
+var = pd.Series(((X_distri.index - mean)**2)*X_distri['Prob']).sum()
 
+mean=6.999999999999998 
+var=5.833333333333333
+
+
+# si calculamos la media y la varianza de los resultados (con un número suficientemente alto de ensayos, por ejemplo, 20000)...
+
+ensayo = 20000
+resultado = [die.sample(2, replace=True).sum().loc[0] for i in range(ensayo)]
+
+#imprime la media y la varianza de los 20000 ensayos
+
+resultado = pd.Series(resultado)
+print("la media es", resultado.mean(), "la varianza es", resultado.var())
+
+la media es 6.9879 la varianza es 5.849246052304745
 
 
